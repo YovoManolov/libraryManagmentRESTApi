@@ -14,14 +14,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "author")
-public class Author {
+public class Author extends RepresentationModel<Author> {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

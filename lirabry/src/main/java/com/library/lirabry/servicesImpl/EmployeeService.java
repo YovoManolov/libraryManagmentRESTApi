@@ -68,8 +68,13 @@ public class EmployeeService implements EmployeeServiceI {
 	}
 	
 	@Override
-	public void deleteEmployee(Long id) {
-		employeeRepository.deleteById(id);
+	public boolean deleteEmployee(Long id) {
+		if(employeeRepository.findById(id).isPresent()) {
+			employeeRepository.deleteById(id);
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

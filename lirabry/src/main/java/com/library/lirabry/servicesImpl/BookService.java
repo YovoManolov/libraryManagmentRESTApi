@@ -68,8 +68,14 @@ public class BookService implements BookServiceI {
 	}
 	
 	@Override
-	public void deleteBook(Long id) {
-		bookRepository.deleteById(id);
+	public boolean deleteBook(Long id) {
+		
+		if(bookRepository.findById(id).isPresent()) {
+			bookRepository.deleteById(id);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public List<Book> findAllBooksByAuthor(Author author){

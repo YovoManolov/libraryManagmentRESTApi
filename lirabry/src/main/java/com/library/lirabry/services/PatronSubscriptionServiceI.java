@@ -15,7 +15,7 @@ public interface PatronSubscriptionServiceI {
 
 	PatronSubscription updatePatronSubscription(PatronSubscription newPatronSubscription, Long id);
 
-	void deletePatronSubscription(Long id);
+	boolean deletePatronSubscription(Long id);
 
 	List<PatronSubscription> findAllByPatronFirstName(String firstName);
 

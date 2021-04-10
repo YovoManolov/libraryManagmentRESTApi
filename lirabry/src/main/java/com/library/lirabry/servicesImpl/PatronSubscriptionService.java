@@ -66,8 +66,13 @@ public class PatronSubscriptionService implements PatronSubscriptionServiceI {
 	}
 	
 	@Override
-	public void deletePatronSubscription(Long id) {
-		patronSubscriptionRepository.deleteById(id);
+	public boolean deletePatronSubscription(Long id) {
+		if(patronSubscriptionRepository.findById(id).isPresent()) {
+			patronSubscriptionRepository.deleteById(id);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	@Override

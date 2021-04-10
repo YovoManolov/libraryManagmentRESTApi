@@ -5,48 +5,64 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.library.lirabry.exception.RecordNotFoundException;
 import com.library.lirabry.model.Author;
+import com.library.lirabry.model.Book;
 import com.library.lirabry.servicesImpl.AuthorService;
+import com.library.lirabry.servicesImpl.BookService;
 
+@RestController
+@RequestMapping("/authors")
 public class AuthorController {
 	
 	@Autowired
-	AuthorService authorService;
-	
-    @GetMapping("/getAll")
-    public ResponseEntity<List<Author>> getAllAuthors() {
-    	 List<Author> authorList = authorService.getAllAuthors();
-         return new ResponseEntity<List<Author>>(authorList, HttpStatus.OK);
-    }
+	BookService bookService;
 
-    @GetMapping("/getOneById/{id}")
-    public ResponseEntity<Author> 
-    	getAuthorById(@PathVariable(value = "id") Long authorId) throws RecordNotFoundException {
-    	
-        Author author = authorService.getAuthorById(authorId);
-        return new ResponseEntity<Author>(author, HttpStatus.OK);
-    }
-   
-    @PutMapping("/create")
-	public ResponseEntity<Author> createAuthor(
-			@RequestBody Author author) {
-    	
-    		Author createdAuthor = authorService.createAuthor(author);
-    		return new ResponseEntity<Author>(createdAuthor, HttpStatus.OK);
-    	
+	@GetMapping("/")
+	public ResponseEntity<List<Book>> getAllBooks() {
+		List<Book> bookList = bookService.getAllBooks();
+		return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
 	}
-	
-	@PutMapping("/update/{id}")
-	public ResponseEntity<Author> updateAuthor(
-			@RequestBody Author newAuthor, @PathVariable Long id )
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Book> getBookById(@PathVariable(value = "id") Long bookId) throws RecordNotFoundException {
+
+		Book book = bookService.getBookById(bookId);
+		return new ResponseEntity<Book>(book, HttpStatus.OK);
+	}
+
+	@PostMapping("/")
+	public ResponseEntity<Book> createBook(@RequestBody Book book) {
+
+		Book createdBook = bookService.createBook(book);
+		return new ResponseEntity<Book>(createdBook, HttpStatus.CREATED);
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<Book> updateBook(@RequestBody Book newBook, @PathVariable Long id)
 			throws RecordNotFoundException {
-		Author updatedAuthor = authorService.updateAuthor(newAuthor,id);
-		return new ResponseEntity<Author>(updatedAuthor, HttpStatus.OK);
+
+		Book updatedBook = bookService.updateBook(newBook, id);
+		return new ResponseEntity<Book>(updatedBook, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> deletePeriferialDeviceById(@PathVariable("id") Long bookId)
+			throws RecordNotFoundException {
+		boolean result = bookService.deleteBook(bookId);
+		if(result) {
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }

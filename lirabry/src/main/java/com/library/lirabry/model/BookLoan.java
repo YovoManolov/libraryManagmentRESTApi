@@ -11,12 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "book_loan")
-public class BookLoan {
+public class BookLoan extends RepresentationModel<BookLoan> {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
