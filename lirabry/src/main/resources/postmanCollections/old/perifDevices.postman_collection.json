@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "ccde461a-da46-4eda-bad6-8f9bfa0655d2",
+		"name": "perifDevices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"vendor\":\"Vendor Test5\",\n\t\"dateCreated\":\"2013-09-25T20:04:11.000Z\",\n\t\"status\": 1,\n\t\"gateway\": {\n\t\t\"id\": 4\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/periferialDevices/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"periferialDevices",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePerifDeviceById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/periferialDevices/deleteById/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"periferialDevices",
+						"deleteById",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"vendor\":\"Vendor No\",\n\t\"dateCreated\":\"2019-09-25T20:04:11.000Z\",\n\t\"status\": 1,\n\t\"gateway\": {\n\t\t\"id\": 4\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/periferialDevices/update/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"periferialDevices",
+						"update",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

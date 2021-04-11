@@ -17,6 +17,7 @@ public interface BookServiceI {
 	Book updateBook(Book newBook, Long id);
 
 	boolean deleteBook(Long id);
+
+	List<Book> findAllBooksByAuthor(Long authorId);
 	
-	List<Book> findAllBooksByAuthor(Author author);
 }

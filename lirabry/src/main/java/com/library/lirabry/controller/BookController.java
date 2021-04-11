@@ -38,6 +38,12 @@ public class BookController {
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 	}
 
+	@GetMapping("?author={id}")
+	public ResponseEntity<List<Book>> findBooksByAuthorId(@PathVariable(value = "id") Long authorId) throws RecordNotFoundException {
+		List<Book> bookList = bookService.findAllBooksByAuthor(authorId);
+		return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
+	}
+	
 	@PostMapping("/")
 	public ResponseEntity<Book> createBook(@RequestBody Book book) {
 

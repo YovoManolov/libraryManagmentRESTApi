@@ -78,7 +78,8 @@ public class BookService implements BookServiceI {
 		}
 	}
 	
-	public List<Book> findAllBooksByAuthor(Author author){
-		return bookRepository.findByAuthor(author);
+	@Override
+	public List<Book> findAllBooksByAuthor(Long authorId){
+		return bookRepository.findByAuthorId(authorId);
 	}
 }
