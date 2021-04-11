@@ -3,7 +3,6 @@ package com.library.lirabry.services;
 import java.util.List;
 
 import com.library.lirabry.exception.RecordNotFoundException;
-import com.library.lirabry.model.Author;
 import com.library.lirabry.model.Book;
 
 public interface BookServiceI {

@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,7 +39,6 @@ public class Publisher extends RepresentationModel<Publisher> {
 	@OneToMany(mappedBy = "publisher",
 			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonBackReference
-	@JoinColumn(name="publisher_id", nullable = true)
 	private Set<Book> books;
 	
 }

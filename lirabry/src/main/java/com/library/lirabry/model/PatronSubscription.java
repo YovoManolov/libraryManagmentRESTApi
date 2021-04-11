@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -28,11 +29,11 @@ public class PatronSubscription {
 	private LocalDate startDate;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "patron_id")
+	@JoinColumn(name = "patron_id")
 	private Patron patron;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "subscription_id")
+	@JoinColumn(name = "subscription_id")
 	private Subscription subscription;
 
 }

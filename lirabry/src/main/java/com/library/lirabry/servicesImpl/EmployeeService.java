@@ -6,12 +6,14 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.library.lirabry.exception.RecordNotFoundException;
 import com.library.lirabry.model.Employee;
 import com.library.lirabry.repository.EmployeeRepository;
 import com.library.lirabry.services.EmployeeServiceI;
 
+@Service
 public class EmployeeService implements EmployeeServiceI {
 
 	

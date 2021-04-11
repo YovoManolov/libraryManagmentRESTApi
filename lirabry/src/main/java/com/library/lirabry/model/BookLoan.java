@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,14 +34,14 @@ public class BookLoan extends RepresentationModel<BookLoan> {
 	private LocalDate toBeReturnedDate; 
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "book_id")
+	@JoinColumn(name = "book_id")
 	private Book book; 
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "patron_id")
+	@JoinColumn(name = "patron_id")
 	private Patron patron; 
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "employee_id")
+	@JoinColumn(name = "employee_id")
 	private Employee employee; 
 }

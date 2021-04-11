@@ -38,20 +38,19 @@ public class Book extends RepresentationModel<Book>{
 	private Integer copiesAvailable;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "author_id")
+	@JoinColumn(name = "author_id")
 	private Author author;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "publisher_id")
+	@JoinColumn(name = "publisher_id")
 	private Publisher publisher;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "book_condition_id")
+	@JoinColumn(name = "book_condition_id")
 	private BookCondition bookCondition;
 	
 	@OneToMany(mappedBy = "book",
 			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonBackReference
-	@JoinColumn(name="book_id", nullable = true)
 	private Set<BookLoan> bookLoans;
 }

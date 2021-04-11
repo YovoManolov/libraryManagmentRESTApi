@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -52,8 +51,6 @@ public class Patron extends RepresentationModel<Patron> {
 	@OneToMany(mappedBy = "patron",
 			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonBackReference
-	@JoinColumn(name="patron_id", nullable = true)
 	private Set<BookLoan> bookLoans;
 
-	
 }

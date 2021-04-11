@@ -6,13 +6,14 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.library.lirabry.exception.RecordNotFoundException;
-import com.library.lirabry.model.Author;
 import com.library.lirabry.model.Book;
 import com.library.lirabry.repository.BookRepository;
 import com.library.lirabry.services.BookServiceI;
 
+@Service
 public class BookService implements BookServiceI {
 	
 	@Autowired
