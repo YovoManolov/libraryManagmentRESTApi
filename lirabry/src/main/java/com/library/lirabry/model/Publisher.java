@@ -36,7 +36,7 @@ public class Publisher extends RepresentationModel<Publisher> {
 	private LocalDate established;
 	
 	@OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonBackReference(value="publisher_books")
 	private Set<Book> books;
 	
 }

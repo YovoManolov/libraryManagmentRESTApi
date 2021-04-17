@@ -55,7 +55,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n   \"firstName\": \"firstName_test\",\n   \"lastName\": \"lastName_test\",\n   \"bitrthPlace\": \"test_UpdateCity\",\n   \"bitrthDate\": \"1978-04-26\",\n   \"books\": [\n      {\n         \"id\": 16,\n         \"name\": \"book1_newAuthor16\",\n         \"copiesAvailable\": 5,\n         \"publisher_id\": 3,\n         \"book_condition_id\": 2,\n         \"bookLoans\":[]\n      },\n      {\n        \"id\": 17,\n        \"name\": \"book2_newAuthor16\",\n        \"copiesAvailable\": 5,\n        \"publisher_id\": 3,\n        \"book_condition_id\": 2,\n        \"bookLoans\":[]\n      }\n   ]\n}",
+					"raw": "{\n   \"firstName\": \"firstName_test\",\n   \"lastName\": \"lastName_test\",\n   \"bitrthPlace\": \"test_UpdateCity\",\n   \"bitrthDate\": \"1978-04-26\",\n   \"books\": [\n      {\n         \"id\": 16,\n         \"name\": \"book1_newAuthor16\",\n         \"copiesAvailable\": 5,\n         \"publisher_id\": 3,\n         \"book_condition_id\": 2\n      },\n      {\n        \"id\": 17,\n        \"name\": \"book2_newAuthor16\",\n        \"copiesAvailable\": 5,\n        \"publisher_id\": 3,\n        \"book_condition_id\": 2\n      }\n   ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"

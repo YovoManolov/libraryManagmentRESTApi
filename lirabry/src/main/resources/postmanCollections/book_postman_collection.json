@@ -125,19 +125,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/books?author=3",
+					"raw": "http://localhost:8080/books/author?id=4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"books"
+						"books",
+						"author"
 					],
 					"query": [
 						{
-							"key": "author",
-							"value": "3"
+							"key": "id",
+							"value": "4"
 						}
 					]
 				}

@@ -45,6 +45,6 @@ public class Employee extends RepresentationModel<Employee> {
 	private Double salary;
 	
 	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonBackReference(value="employee_bookLoan")
 	private Set<BookLoan> bookLoans;
 }

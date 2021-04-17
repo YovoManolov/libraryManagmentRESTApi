@@ -2,13 +2,13 @@ package com.library.lirabry.servicesImpl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.lirabry.exception.RecordNotFoundException;
 import com.library.lirabry.model.Author;
+import com.library.lirabry.model.Book;
 import com.library.lirabry.repository.AuthorRepository;
 import com.library.lirabry.services.AuthorServiceI;
 
@@ -17,6 +17,9 @@ public class AuthorService implements AuthorServiceI {
 	
 	@Autowired
 	AuthorRepository authorRepository;
+	
+	@Autowired
+	BookService bookService;
 	
 	@Override
 	public List<Author> getAllAuthors() throws RecordNotFoundException {
@@ -50,21 +53,25 @@ public class AuthorService implements AuthorServiceI {
 	@Override
 	public Author updateAuthor(Author newAuthor, Long id ) {
 	
-			Function<Author,Author> updateAuthor = (authorUpdated) -> {
-				
-				authorUpdated.setBitrthDate(newAuthor.getBitrthDate());
-				authorUpdated.setBitrthPlace(newAuthor.getBitrthPlace());
-				authorUpdated.setBooks(newAuthor.getBooks());
-				authorUpdated.setFirstName(newAuthor.getFirstName());
-				authorUpdated.setLastName(newAuthor.getLastName());
-				
-				return authorRepository.save(authorUpdated);
-			};
-			
-			Optional<Object> updatedAuthor = 
-					authorRepository.findById(id).map(updateAuthor);
-				
-			return (Author) updatedAuthor.get();
+		Optional<Object> updatedAuthor = 
+				authorRepository.findById(id).map(authorUpdated -> {
+
+			authorUpdated.setBitrthDate(newAuthor.getBitrthDate());
+			authorUpdated.setBitrthPlace(newAuthor.getBitrthPlace());
+			authorUpdated.setFirstName(newAuthor.getFirstName());
+			authorUpdated.setLastName(newAuthor.getLastName());
+			updateAllBooksByAuthor(newAuthor);
+
+			return authorRepository.save(authorUpdated);
+		});
+
+		return (Author) updatedAuthor.get();
+	}
+	
+	private void updateAllBooksByAuthor(Author newAuthor) {
+		for(Book book: newAuthor.getBooks()) {
+			bookService.updateBook(book, book.getId());
+		}
 	}
 	
 	@Override

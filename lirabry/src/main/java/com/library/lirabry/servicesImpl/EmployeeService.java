@@ -2,7 +2,6 @@ package com.library.lirabry.servicesImpl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,23 +50,21 @@ public class EmployeeService implements EmployeeServiceI {
 	@Override
 	public Employee updateEmployee(Employee newEmployee, Long id ) {
 	
-			Function<Employee,Employee> updateEmployee = (employeeUpdated) -> {
-				
-				employeeUpdated.setBookLoans(newEmployee.getBookLoans());
-				employeeUpdated.setDateOfEmployment(newEmployee.getDateOfEmployment());
-				employeeUpdated.setFirstName(newEmployee.getFirstName());
-				employeeUpdated.setLastName(newEmployee.getLastName());
-				employeeUpdated.setPhoneNumber(newEmployee.getPhoneNumber());
-				
-				return employeeRepository.save(employeeUpdated);
-			};
-			
-			Optional<Object> updatedEmployee = 
-					employeeRepository.findById(id).map(updateEmployee);
-				
-			return (Employee) updatedEmployee.get();
+		Optional<Object> updatedEmployee = 
+				employeeRepository.findById(id).map(employeeUpdated -> {
+
+			employeeUpdated.setBookLoans(newEmployee.getBookLoans());
+			employeeUpdated.setDateOfEmployment(newEmployee.getDateOfEmployment());
+			employeeUpdated.setFirstName(newEmployee.getFirstName());
+			employeeUpdated.setLastName(newEmployee.getLastName());
+			employeeUpdated.setPhoneNumber(newEmployee.getPhoneNumber());
+
+			return employeeRepository.save(employeeUpdated);
+		});
+
+		return (Employee) updatedEmployee.get();
 	}
-	
+
 	@Override
 	public boolean deleteEmployee(Long id) {
 		if(employeeRepository.findById(id).isPresent()) {

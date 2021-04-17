@@ -54,6 +54,6 @@ public class Book extends RepresentationModel<Book>{
 	private BookCondition bookCondition;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonBackReference(value="book_bookLoans")
 	private Set<BookLoan> bookLoans;
 }

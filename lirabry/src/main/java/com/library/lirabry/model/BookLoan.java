@@ -35,17 +35,17 @@ public class BookLoan extends RepresentationModel<BookLoan> {
 	private LocalDate toBeReturnedDate; 
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="book_loan_book")
 	@JoinColumn(name = "book_id")
 	private Book book; 
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="book_loan_patron")
 	@JoinColumn(name = "patron_id")
 	private Patron patron; 
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="book_loan_employee")
 	@JoinColumn(name = "employee_id")
 	private Employee employee; 
 }

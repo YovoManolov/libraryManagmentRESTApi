@@ -2,7 +2,6 @@ package com.library.lirabry.servicesImpl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,7 +49,9 @@ public class BookService implements BookServiceI {
 	@Override
 	public Book updateBook(Book newBook, Long id ) {
 	
-			Function<Book,Book> updateBook = (bookUpdated) -> {
+			Optional<Object> updatedBook =  
+				bookRepository.findById(id).map(bookUpdated -> {
+					
 				bookUpdated.setAuthor(newBook.getAuthor());
 				bookUpdated.setBookCondition(newBook.getBookCondition());
 				bookUpdated.setBookLoans(newBook.getBookLoans());
@@ -59,10 +60,7 @@ public class BookService implements BookServiceI {
 				bookUpdated.setPublisher(newBook.getPublisher());
 				
 				return bookRepository.save(bookUpdated);
-			};
-			
-			Optional<Object> updatedBook = 
-					bookRepository.findById(id).map(updateBook);
+			});
 				
 			return (Book) updatedBook.get();
 	}

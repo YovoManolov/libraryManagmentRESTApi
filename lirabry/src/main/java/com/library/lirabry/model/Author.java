@@ -42,7 +42,7 @@ public class Author extends RepresentationModel<Author> {
 	private LocalDate bitrthDate; 
 	
 	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonBackReference(value="author-books")
 	private Set<Book> books;
 	
 }

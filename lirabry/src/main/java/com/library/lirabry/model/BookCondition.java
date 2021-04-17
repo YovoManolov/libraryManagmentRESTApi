@@ -32,7 +32,7 @@ public class BookCondition extends RepresentationModel<BookCondition>{
     private String conditionType;
     
 	@OneToMany(mappedBy = "bookCondition", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonBackReference(value="book_condition_books")
 	private Set<Book> books;
 	
 }

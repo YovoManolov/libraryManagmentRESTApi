@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,9 @@ public class EmployeeController {
 		return new ResponseEntity<Employee>(createdEmployee, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping(value="/{id}",
+			consumes={ MediaType.APPLICATION_JSON_VALUE},
+			produces = { MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee newEmployee, @PathVariable Long id)
 			throws RecordNotFoundException {
 
