@@ -47,22 +47,18 @@ public class BookService implements BookServiceI {
 	}
 
 	@Override
-	public Book updateBook(Book newBook, Long id ) {
-	
-			Optional<Object> updatedBook =  
-				bookRepository.findById(id).map(bookUpdated -> {
-					
-				bookUpdated.setAuthor(newBook.getAuthor());
-				bookUpdated.setBookCondition(newBook.getBookCondition());
-				bookUpdated.setBookLoans(newBook.getBookLoans());
-				bookUpdated.setCopiesAvailable(newBook.getCopiesAvailable());
-				bookUpdated.setName(newBook.getName());
-				bookUpdated.setPublisher(newBook.getPublisher());
-				
-				return bookRepository.save(bookUpdated);
-			});
-				
-			return (Book) updatedBook.get();
+	public Book updateBookInfo(Book newBook, Long id) {
+
+		Optional<Object> updatedBook = bookRepository.findById(id).map(bookUpdated -> {
+
+			bookUpdated.setName(newBook.getName());
+			bookUpdated.setCopiesAvailable(newBook.getCopiesAvailable());
+			bookUpdated.setBookCondition(newBook.getBookCondition());
+			
+			return bookRepository.save(bookUpdated);
+		});
+
+		return (Book) updatedBook.get();
 	}
 	
 	@Override

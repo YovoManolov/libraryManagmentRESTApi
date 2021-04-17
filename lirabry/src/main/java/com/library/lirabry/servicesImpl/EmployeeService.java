@@ -48,16 +48,16 @@ public class EmployeeService implements EmployeeServiceI {
 	}
 
 	@Override
-	public Employee updateEmployee(Employee newEmployee, Long id ) {
-	
-		Optional<Object> updatedEmployee = 
-				employeeRepository.findById(id).map(employeeUpdated -> {
+	public Employee updateEmployee(Employee newEmployee, Long id) {
 
-			employeeUpdated.setBookLoans(newEmployee.getBookLoans());
-			employeeUpdated.setDateOfEmployment(newEmployee.getDateOfEmployment());
+		Optional<Object> updatedEmployee = employeeRepository.findById(id).map(employeeUpdated -> {
+
 			employeeUpdated.setFirstName(newEmployee.getFirstName());
 			employeeUpdated.setLastName(newEmployee.getLastName());
+			employeeUpdated.setDateOfEmployment(newEmployee.getDateOfEmployment());
 			employeeUpdated.setPhoneNumber(newEmployee.getPhoneNumber());
+			employeeUpdated.setSalary(newEmployee.getSalary());
+			employeeUpdated.setBookLoans(newEmployee.getBookLoans());
 
 			return employeeRepository.save(employeeUpdated);
 		});

@@ -13,7 +13,7 @@ public interface BookServiceI {
 
 	Book createBook(Book newBook);
 
-	Book updateBook(Book newBook, Long id);
+	Book updateBookInfo(Book newBook, Long id);
 
 	boolean deleteBook(Long id);
 

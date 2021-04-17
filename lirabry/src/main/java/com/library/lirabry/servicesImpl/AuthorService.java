@@ -70,7 +70,7 @@ public class AuthorService implements AuthorServiceI {
 	
 	private void updateAllBooksByAuthor(Author newAuthor) {
 		for(Book book: newAuthor.getBooks()) {
-			bookService.updateBook(book, book.getId());
+			bookService.updateBookInfo(book, book.getId());
 		}
 	}
 	

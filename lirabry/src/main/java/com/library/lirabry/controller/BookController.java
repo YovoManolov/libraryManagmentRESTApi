@@ -60,7 +60,7 @@ public class BookController {
 	public ResponseEntity<Book> updateBook(@RequestBody Book newBook, @PathVariable Long id)
 			throws RecordNotFoundException {
 
-		Book updatedBook = bookService.updateBook(newBook, id);
+		Book updatedBook = bookService.updateBookInfo(newBook, id);
 		return new ResponseEntity<Book>(updatedBook, HttpStatus.OK);
 	}
 
