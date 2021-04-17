@@ -26,7 +26,7 @@ public class BookController {
 	BookService bookService;
 
 	@GetMapping("/")
-	public ResponseEntity<List<Book>> getAllBooks() {
+	public ResponseEntity<List<Book>> getAllBooks() throws RecordNotFoundException {
 		List<Book> bookList = bookService.getAllBooks();
 		return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
 	}

@@ -1,6 +1,5 @@
 package com.library.lirabry.servicesImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -21,14 +20,14 @@ public class PatronSubscriptionService implements PatronSubscriptionServiceI {
 	PatronSubscriptionRepository patronSubscriptionRepository;
 	
 	@Override
-	public List<PatronSubscription> getAllPatronSubscriptions() {
+	public List<PatronSubscription> getAllPatronSubscriptions() throws RecordNotFoundException {
 		
 		List<PatronSubscription> patronSubscriptionList = patronSubscriptionRepository.findAll();
 		
         if(patronSubscriptionList.size() > 0) {
             return patronSubscriptionList;
         } else {
-            return new ArrayList<PatronSubscription>();
+            throw new RecordNotFoundException("No patronSubscription records exist!");
         }
 	}
 

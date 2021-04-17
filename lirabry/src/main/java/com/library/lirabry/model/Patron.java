@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,8 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.hateoas.RepresentationModel;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -48,9 +45,7 @@ public class Patron extends RepresentationModel<Patron> {
 	@Column(name = "register_date")
 	private LocalDate registerDate;
 	
-	@OneToMany(mappedBy = "patron",
-			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonBackReference
+	@OneToMany(mappedBy = "patron", cascade = CascadeType.ALL)
 	private Set<BookLoan> bookLoans;
 
 }

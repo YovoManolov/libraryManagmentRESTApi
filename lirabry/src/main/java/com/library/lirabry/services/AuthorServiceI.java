@@ -7,7 +7,7 @@ import com.library.lirabry.model.Author;
 
 public interface AuthorServiceI {
 	
-	List<Author> getAllAuthors();
+	List<Author> getAllAuthors() throws RecordNotFoundException;
 
 	Author getAuthorById(Long authorId) throws RecordNotFoundException;
 

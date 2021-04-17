@@ -35,8 +35,6 @@ public class Subscription extends RepresentationModel<Subscription> {
 	@Column(name = "price")
     private Double price;
 	
-	@OneToMany(mappedBy = "subscription",
-			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonBackReference
+	@OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL)
 	private Set<PatronSubscription> patronSubscriptions;
 }

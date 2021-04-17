@@ -7,7 +7,7 @@ import com.library.lirabry.model.Employee;
 
 public interface EmployeeServiceI {
 
-	List<Employee> getAllEmployees();
+	List<Employee> getAllEmployees() throws RecordNotFoundException;
 
 	Employee getEmployeeById(Long employeeId) throws RecordNotFoundException;
 

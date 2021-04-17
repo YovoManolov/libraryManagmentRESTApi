@@ -1,6 +1,5 @@
 package com.library.lirabry.servicesImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -20,14 +19,14 @@ public class BookService implements BookServiceI {
 	BookRepository bookRepository;
 	
 	@Override
-	public List<Book> getAllBooks() {
+	public List<Book> getAllBooks() throws RecordNotFoundException {
 		
 		List<Book> bookList = bookRepository.findAll();
 		
         if(bookList.size() > 0) {
             return bookList;
         } else {
-            return new ArrayList<Book>();
+            throw new RecordNotFoundException("No book records exist!");
         }
 	}
 

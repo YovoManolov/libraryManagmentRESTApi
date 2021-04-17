@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,15 +34,18 @@ public class BookLoan extends RepresentationModel<BookLoan> {
 	@Column(name = "to_be_returned_date")
 	private LocalDate toBeReturnedDate; 
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "book_id")
 	private Book book; 
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "patron_id")
 	private Patron patron; 
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "employee_id")
 	private Employee employee; 
 }

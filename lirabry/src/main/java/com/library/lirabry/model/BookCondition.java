@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +31,7 @@ public class BookCondition extends RepresentationModel<BookCondition>{
 	@Column(name = "condition_type")
     private String conditionType;
     
-	@OneToMany(mappedBy = "bookCondition",
-			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "bookCondition", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private Set<Book> books;
 	

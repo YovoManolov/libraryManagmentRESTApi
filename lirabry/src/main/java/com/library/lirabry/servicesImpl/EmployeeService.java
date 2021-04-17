@@ -1,6 +1,5 @@
 package com.library.lirabry.servicesImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -21,14 +20,14 @@ public class EmployeeService implements EmployeeServiceI {
 	EmployeeRepository employeeRepository;
 	
 	@Override
-	public List<Employee> getAllEmployees() {
+	public List<Employee> getAllEmployees() throws RecordNotFoundException {
 		
 		List<Employee> employeeList = employeeRepository.findAll();
 		
         if(employeeList.size() > 0) {
             return employeeList;
         } else {
-            return new ArrayList<Employee>();
+            throw new RecordNotFoundException("No employee records exist!");
         }
 	}
 

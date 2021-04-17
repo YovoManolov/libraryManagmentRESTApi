@@ -7,7 +7,7 @@ import com.library.lirabry.model.PatronSubscription;
 
 public interface PatronSubscriptionServiceI {
 	
-	List<PatronSubscription> getAllPatronSubscriptions();
+	List<PatronSubscription> getAllPatronSubscriptions() throws RecordNotFoundException;
 
 	PatronSubscription getPatronSubscriptionById(Long patronSubscriptionId) throws RecordNotFoundException;
 

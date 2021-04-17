@@ -26,7 +26,7 @@ public class PatronSubscriptionController {
 	PatronSubscriptionService patronSubscriptionService;
 
 	@GetMapping("/")
-	public ResponseEntity<List<PatronSubscription>> getAllPatronSubscriptions() {
+	public ResponseEntity<List<PatronSubscription>> getAllPatronSubscriptions() throws RecordNotFoundException {
 		List<PatronSubscription> patronSubscriptionList = patronSubscriptionService.getAllPatronSubscriptions();
 		return new ResponseEntity<List<PatronSubscription>>(patronSubscriptionList, HttpStatus.OK);
 	}

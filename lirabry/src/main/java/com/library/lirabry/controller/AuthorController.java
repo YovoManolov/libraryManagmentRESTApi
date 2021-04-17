@@ -26,7 +26,7 @@ public class AuthorController {
 	AuthorService authorService;
 
 	@GetMapping("/")
-	public ResponseEntity<List<Author>> getAllAuthors() {
+	public ResponseEntity<List<Author>> getAllAuthors() throws RecordNotFoundException {
 		List<Author> authorList = authorService.getAllAuthors();
 		return new ResponseEntity<List<Author>>(authorList, HttpStatus.OK);
 	}

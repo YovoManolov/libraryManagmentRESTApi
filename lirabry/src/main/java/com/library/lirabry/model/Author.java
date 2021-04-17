@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,8 +41,7 @@ public class Author extends RepresentationModel<Author> {
 	@Column(name = "birth_date")
 	private LocalDate bitrthDate; 
 	
-	@OneToMany(mappedBy = "author",
-			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private Set<Book> books;
 	

@@ -26,7 +26,7 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@GetMapping("/")
-	public ResponseEntity<List<Employee>> getAllEmployees() {
+	public ResponseEntity<List<Employee>> getAllEmployees() throws RecordNotFoundException {
 		List<Employee> employeeList = employeeService.getAllEmployees();
 		return new ResponseEntity<List<Employee>>(employeeList, HttpStatus.OK);
 	}

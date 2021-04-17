@@ -7,7 +7,7 @@ import com.library.lirabry.model.Book;
 
 public interface BookServiceI {
 
-	List<Book> getAllBooks();
+	List<Book> getAllBooks() throws RecordNotFoundException;
 
 	Book getBookById(Long bookId) throws RecordNotFoundException;
 

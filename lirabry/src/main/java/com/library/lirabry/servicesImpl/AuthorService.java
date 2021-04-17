@@ -1,6 +1,5 @@
 package com.library.lirabry.servicesImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -20,14 +19,14 @@ public class AuthorService implements AuthorServiceI {
 	AuthorRepository authorRepository;
 	
 	@Override
-	public List<Author> getAllAuthors() {
+	public List<Author> getAllAuthors() throws RecordNotFoundException {
 		
 		List<Author> authorList = authorRepository.findAll();
 		
         if(authorList.size() > 0) {
             return authorList;
         } else {
-            return new ArrayList<Author>();
+            throw new RecordNotFoundException("No author records exist!");
         }
 	}
 

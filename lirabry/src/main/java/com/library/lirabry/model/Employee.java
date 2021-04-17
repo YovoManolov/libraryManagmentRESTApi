@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,8 +44,7 @@ public class Employee extends RepresentationModel<Employee> {
 	@Column(name = "salary")
 	private Double salary;
 	
-	@OneToMany(mappedBy = "employee",
-			 fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private Set<BookLoan> bookLoans;
 }
