@@ -60,19 +60,13 @@ public class AuthorService implements AuthorServiceI {
 			authorUpdated.setBitrthPlace(newAuthor.getBitrthPlace());
 			authorUpdated.setFirstName(newAuthor.getFirstName());
 			authorUpdated.setLastName(newAuthor.getLastName());
-			updateAllBooksByAuthor(newAuthor);
-
+			
 			return authorRepository.save(authorUpdated);
 		});
 
 		return (Author) updatedAuthor.get();
 	}
 	
-	private void updateAllBooksByAuthor(Author newAuthor) {
-		for(Book book: newAuthor.getBooks()) {
-			bookService.updateBookInfo(book, book.getId());
-		}
-	}
 	
 	@Override
 	public boolean deleteAuthor(Long id) {

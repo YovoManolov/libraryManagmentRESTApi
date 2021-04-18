@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -33,5 +35,6 @@ public class Subscription extends RepresentationModel<Subscription> {
     private Double price;
 	
 	@OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL)
+	@JsonBackReference(value="subscriptionType-patronSubscriptions")
 	private Set<PatronSubscription> patronSubscriptions;
 }

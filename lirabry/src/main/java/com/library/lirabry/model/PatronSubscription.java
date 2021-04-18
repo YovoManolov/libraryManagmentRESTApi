@@ -30,12 +30,10 @@ public class PatronSubscription {
 	private LocalDate startDate;
 
 	@ManyToOne
-	@JsonBackReference(value="subscription_patron")
 	@JoinColumn(name = "patron_id")
 	private Patron patron;
 
 	@ManyToOne
-	@JsonBackReference(value="subscription_subscrition_type")
 	@JoinColumn(name = "subscription_id")
 	private Subscription subscription;
 

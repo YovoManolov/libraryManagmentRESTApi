@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -46,6 +48,7 @@ public class Patron extends RepresentationModel<Patron> {
 	private LocalDate registerDate;
 	
 	@OneToMany(mappedBy = "patron", cascade = CascadeType.ALL)
+	@JsonBackReference(value="patron_bookLoans")
 	private Set<BookLoan> bookLoans;
 
 }

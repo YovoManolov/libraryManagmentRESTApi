@@ -26,7 +26,7 @@ public class BookController {
 
 	@Autowired
 	BookService bookService;
-
+	
 	@GetMapping("/")
 	public ResponseEntity<List<Book>> getAllBooks() throws RecordNotFoundException {
 		List<Book> bookList = bookService.getAllBooks();
@@ -48,7 +48,7 @@ public class BookController {
 	}
 
 	@PostMapping("/")
-	public ResponseEntity<Book> createBook(@RequestBody Book book) {
+	public ResponseEntity<Book> createBook(@RequestBody Book book) throws RecordNotFoundException {
 
 		Book createdBook = bookService.createBook(book);
 		return new ResponseEntity<Book>(createdBook, HttpStatus.CREATED);

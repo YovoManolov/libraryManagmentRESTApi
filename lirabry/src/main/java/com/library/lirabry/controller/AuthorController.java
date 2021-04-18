@@ -25,7 +25,7 @@ public class AuthorController {
 	
 	@Autowired
 	AuthorService authorService;
-
+	
 	@GetMapping("/")
 	public ResponseEntity<List<Author>> getAllAuthors() throws RecordNotFoundException {
 		List<Author> authorList = authorService.getAllAuthors();
