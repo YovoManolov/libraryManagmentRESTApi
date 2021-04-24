@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.library.lirabry.exception.RecordNotFoundException;
 import com.library.lirabry.model.Author;
-import com.library.lirabry.model.Book;
 import com.library.lirabry.repository.AuthorRepository;
 import com.library.lirabry.services.AuthorServiceI;
 
